@@ -12,7 +12,7 @@ def afficher(T,n):
     print()
     aux=0
     change=False
-    while not change or (n == 1):
+    while not change :
         change = True
         for i in range(n-1):
             if T[i] > T[i+1]:
