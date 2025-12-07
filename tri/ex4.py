@@ -19,7 +19,7 @@ def verif(chaine):
         if "A"<=chaine[i]<="Z":
             i+=1
         else :
-            i+=5
+            i+=50
 
     return (i==len(chaine)) and (3<=len(chaine)<=7)  
 
