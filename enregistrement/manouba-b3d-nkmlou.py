@@ -12,6 +12,7 @@ def remplir(T,n):
         remplir2(T,i)
 
 def remplir2(T,i):
+    T[i] = {}
     section = "IMXTEL"
     T[i]["cin"] = (input("Donner votre cin\n"))
     while (vcin(T[i]["cin"],i,T) == False) or (len((T[i]["cin"])) != 8):
@@ -55,12 +56,10 @@ def valide(ch):
     return i==len(ch) 
 
 def vcin(en,n,T):
-    t = True
-    for i in range(n-1):
-        if T[i]["cin"] == en:
-            t = False
-    return t
-
+    i=0
+    while i<n and  T[i]["cin"] != en:
+        i = i+1
+    return i == n
 def operation(T,n):
     t=True
     while t:
@@ -70,7 +69,7 @@ def operation(T,n):
         elif choix == 2:
             ajouter(T,n)
         elif choix == 3:
-            supprimer(T,n)
+            supprimer(T)
         elif choix ==4:
             for i in range(n):
                 print(T[i])
@@ -82,10 +81,10 @@ def operation(T,n):
 
 
 def supprimer(T,n):
-    ele=input("Donner le cin d'eleve pour le supprimer")
+    ele=input("Donner le cin d'eleve pour le supprimer\n")
     ind = icin(T,n,ele)
-    aux = T[n]
-    T[n] = T[ind]
+    aux = T[n-1]
+    T[n-12] = T[ind]
     T[ind] = aux
     n = n-1
 
@@ -97,8 +96,9 @@ def icin(T,n,ele):
     return i 
 
 def ajouter(T,n):
-    remplir2(T,n)
     n=n+1
+    remplir2(T,n)
+    
 
     print(T[n])
     
