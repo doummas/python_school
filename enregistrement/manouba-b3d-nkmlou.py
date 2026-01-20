@@ -69,24 +69,32 @@ def operation(T,n):
         elif choix == 2:
             ajouter(T,n)
         elif choix == 3:
-            supprimer(T)
+            supprimer(T,n)
         elif choix ==4:
             for i in range(n):
                 print(T[i])
+        elif choix == 5:
+            pourcentage(T,n)
         else :
             t = False
 
-
-
-
+def pourcentage(T,n):
+    m=0
+    for i in range(n):
+        if T[i]["sexe"] == "M":
+            m = m + 1
+    print(f"garcon pourcentage {(m*100)/n} % et fille pourcentage {100 - ((m*100)/n) } % ")
+    
 
 def supprimer(T,n):
     ele=input("Donner le cin d'eleve pour le supprimer\n")
     ind = icin(T,n,ele)
     aux = T[n-1]
-    T[n-12] = T[ind]
+    T[n-1] = T[ind]
     T[ind] = aux
     n = n-1
+    for i in range(n): 
+        print(T[i])
 
 
 def icin(T,n,ele):
@@ -96,11 +104,15 @@ def icin(T,n,ele):
     return i 
 
 def ajouter(T,n):
-    n=n+1
-    remplir2(T,n)
+    nn=n+1
+    TT=array([eleve]*nn)
+    for i in range(n):
+        TT[i] = {}
+        TT[i] = T[i]
+    remplir2(TT,n)
     
 
-    print(T[n])
+    print(TT[n])
     
 def verifier(T,n):
     en = input("Donner le cin d'eleve \n")
@@ -123,7 +135,7 @@ eleve=dict(
 
 )
 saisir()
-T=array([eleve]*2000)
+T=array([eleve]*n)
 remplir(T,n)
 operation(T,n)
 
