@@ -1,10 +1,9 @@
 from numpy import array
-
 def saisir():
-    global n
     n=int(input("Donnner n\n"))
-    while n>200 or n<2:
+    while n>200 or n<1:
         n=int(input("Donnner n autre fois\n"))
+    return n
 
 
 def remplir(T,n):
@@ -45,6 +44,7 @@ def remplir2(T,i):
     T[i]["section"] = (input("Donner votre section \n")).upper()
     while section.find(T[i]["section"]) == -1:
         T[i]["section"] = input("Donner votre section autre fois \n")
+    
     print(T[i])
             
 
@@ -67,18 +67,29 @@ def operation(T,n):
         if choix== 1:
             verifier(T,n)
         elif choix == 2:
-            ajouter(T,n)
+            n=n+1
+            ajouter(T,n-1)
+            print(n)
         elif choix == 3:
             supprimer(T,n)
+            n=n-1
         elif choix ==4:
             for i in range(n):
                 print(T[i])
+            print(n)
         elif choix == 5:
-            pourcentage(T,n)
-        else :
+            pourcentagemf(T,n)
+        elif choix == 0 :
             t = False
+        else :
+            print("" \
+            "1/verifier par le cin\n" \
+            "2/ajouter un eleve\n" \
+            "3/supprimer un eleve\n" \
+            "4/voir tous les eleve\n" \
+            "5/pourcentage des genres\n")
 
-def pourcentage(T,n):
+def pourcentagemf(T,n):
     m=0
     for i in range(n):
         if T[i]["sexe"] == "M":
@@ -92,9 +103,6 @@ def supprimer(T,n):
     aux = T[n-1]
     T[n-1] = T[ind]
     T[ind] = aux
-    n = n-1
-    for i in range(n): 
-        print(T[i])
 
 
 def icin(T,n,ele):
@@ -104,15 +112,9 @@ def icin(T,n,ele):
     return i 
 
 def ajouter(T,n):
-    nn=n+1
-    TT=array([eleve]*nn)
-    for i in range(n):
-        TT[i] = {}
-        TT[i] = T[i]
-    remplir2(TT,n)
-    
+    remplir2(T,n)
+    print(n)
 
-    print(TT[n])
     
 def verifier(T,n):
     en = input("Donner le cin d'eleve \n")
@@ -134,8 +136,8 @@ eleve=dict(
     section = str()
 
 )
-saisir()
-T=array([eleve]*n)
+n=saisir()
+T=array([eleve]*200)
 remplir(T,n)
 operation(T,n)
 
