@@ -9,14 +9,14 @@ eleve=dict(
 
 )
 def saisir ():
-    return 2
+    return 3
 
 
 
 
 def remplir(T,n):
     for i in range(n):
-        T[i] = {}
+        T[i] = dict()
         T[i]["nom"]=input("nom\n")
         while not(valide(T[i]["nom"])) or len(T[i]["nom"]) >15:
             T[i]["nom"]=input("nom\n")
@@ -68,14 +68,14 @@ def tri(T,n):
                 ech = True
 
 def supprimer(T,n):
-    nb=0
-    tri(T,n)
-    for i in range(n-1):
-        if T[i]["m"]<10 and T[i+1]["m"]>10:
-            nb=n-i
-    TT=array([eleve]*nb)
-    for i in range(nb):
-        TT[i] =T[i+n-nb]
+    i=0
+    while i<=n:
+        while (i<n) and (T[i]["m"]<10):
+            for j in range(i,n):
+                T[j]=T[j+1]
+            n=n-1
+        i=i+1
+    
 
 
 

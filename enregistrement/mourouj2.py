@@ -34,7 +34,7 @@ def remplirT(T,n):
 
 def remplirT1(T,T1,n):
     for i in range(n):
-        T1[i]["matricule"] = T[i]["nom"][0] + T[i]["prenom"][0] + str(T[i]["id"]) + T[i]["genre"] + str(T[i]["année_embauche"])[1:]
+        T1[i]["matricule"] = T[i]["nom"][0] + T[i]["prenom"][0] + str(T[i]["id"]) + T[i]["genre"] + str(T[i]["année_embauche"])[2:]
         T1[i]["age"] = T[i]["age"]
         print(T[i])
         print(T1[i])
@@ -53,21 +53,21 @@ def verifier(ch):
     return i == len(ch)
 
 
-em=dict(
+"""em=dict(
     nom=str,
     prenom=str,
-    id=int,
+    id=str,
     age=int,
     genre=str(),
     année_embauche = int
-)
+)"""
 
-mat=dict(
+"""mat=dict(
     matricule = str,
     age = int
-)
+)"""
 n=saisir()
-T=array([em]*n)
-T1=array([mat]*n)
+T=array([dict]*n)
+T1=array([dict]*n)
 remplirT(T,n)
 remplirT1(T,T1,n)

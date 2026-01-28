@@ -1,6 +1,5 @@
 # t3 classe
 from numpy import array
-from math import *
 
 
 def saisir ():
@@ -26,7 +25,9 @@ def nombre(T,n):
             p=p+1
     print(f"Le nombre des point est {p}")
 
-
+def afficher(T,n):
+    for i in range(n):
+        print(T[i])
 
 
 
@@ -38,3 +39,4 @@ point=dict(
 T=array([point]*n)
 remplir(T,n)
 nombre(T,n)
+afficher(T,n)
