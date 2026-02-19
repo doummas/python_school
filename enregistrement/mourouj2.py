@@ -43,7 +43,7 @@ def unique(en,n,T):
     i=0
     while i<n and T[i]["id"] != en:
         i+=1
-    return i == n and len(str(T[i]["id"])) == 8
+    return i == n 
         
 def verifier(ch):
     ch=ch.upper()
